@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import setuptools
+import subprocess
 
 
 with open('README.md') as readme_file:
@@ -28,7 +29,7 @@ class Venv(setuptools.Command):
         """Abstract method that is required to be overwritten"""
 
     def run(self):
-        venv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'venv', {{ cookiecutter.project_slug }})
+        venv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'venv', '{{ cookiecutter.project_slug }}')
         venv_cmd = [
             'virtualenv',
             venv_path
