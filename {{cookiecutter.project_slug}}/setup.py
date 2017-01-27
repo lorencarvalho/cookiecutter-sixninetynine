@@ -3,7 +3,7 @@
 import setuptools
 
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
 requirements = [
@@ -59,7 +59,6 @@ setuptools.setup(
     name='{{ cookiecutter.project_slug }}',
     version='{{ cookiecutter.version }}',
     description="{{ cookiecutter.project_short_description }}",
-    long_description=readme + '\n\n' + history,
     author="{{ cookiecutter.full_name.replace('\"', '\\\"') }}",
     author_email='{{ cookiecutter.email }}',
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
@@ -95,6 +94,6 @@ setuptools.setup(
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='test',
-    tests_require=test_requirements
+    tests_require=test_requirements,
     cmdclass={'venv': Venv},
 )
