@@ -1,21 +1,26 @@
-#!/usr/bin/env python
-
 import setuptools
 import subprocess
 
 
-with open('README.md') as readme_file:
-    readme = readme_file.read()
-
-requirements = [
+INSTALL_REQUIRES = [
     {%- if cookiecutter.command_line_interface|lower == 'click' %}
     'Click>=6.0',
     {%- endif %}
     # TODO: put package requirements here
 ]
 
-test_requirements = [
-    # TODO: put package test requirements here
+EXTRAS_REQUIRE = [
+    # TODO: put conditional requirements here
+]
+
+# if int(setuptools.__version__.split(".", 1)[0]) < 18:
+#     if sys.version_info[0:2] < (3, 3):
+#        INSTALL_REQUIRES.append("monotonic")
+# else:
+#     EXTRAS_REQUIRE[":python_version<'3.3'"] = ["monotonic"]
+
+TESTS_REQUIRE = [
+    # TODO: put test requirements here
 ]
 
 
@@ -73,7 +78,9 @@ setuptools.setup(
     },
     {%- endif %}
     include_package_data=True,
-    install_requires=requirements,
+    install_requires=INSTALL_REQUIRES,
+    extras_reqiure=EXTRAS_REQUIRE,
+    tests_require=TESTS_REQUIRE,
 {%- if cookiecutter.open_source_license in license_classifiers %}
     license="{{ cookiecutter.open_source_license }}",
 {%- endif %}
@@ -95,6 +102,5 @@ setuptools.setup(
         'Programming Language :: Python :: 3.5',
     ],
     test_suite='test',
-    tests_require=test_requirements,
     cmdclass={'venv': Venv},
 )
